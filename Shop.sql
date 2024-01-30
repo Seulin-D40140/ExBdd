@@ -26,4 +26,12 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "batterie
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "casque audio" , "syno" , 105 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" , "logitoch" , 755 );
 
+-- ajout articles au choix 
+--INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "jeux ps5" , 39 );
+--INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "jeux ps5" , 60 );
+--INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "jeux xbx" , 59 );
+
+-- ajout article et modification avant de verifier s'il a etait pris en compte 
+-- INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "jeux xbx" , 49 );
+-- update T_articles set brand="jeux ps5" where idArticle=16;
 SELECT * FROM T_articles;
