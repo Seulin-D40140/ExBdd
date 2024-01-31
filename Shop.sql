@@ -51,4 +51,21 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" 
 --1.10 afficher la description des articles
 -- select T_articles.Description from T_articles;
 
-SELECT * FROM T_articles;
+--1.11 presenter requet sql interessante ( en attente )
+--select AVG(T_articles.UnitaryPrice) FROM T_articles; ( calcule la moyenne de la colonne price )
+
+CREATE TABLE T_categories 
+(
+	idCategory		int(4)			PRIMARY KEY AUTO_INCREMENT,
+	CatName			varchar(30)		NOT NULL,
+	Description		varchar(100)	NOT NULL
+) ENGINE = InnoDB;
+
+
+INSERT INTO T_categories ( CatName, Description) VALUES ( "peripherique" , "peripherique audio / souris / clavier ..." );
+INSERT INTO T_categories ( CatName, Description) VALUES ( "os" , "systeme d'exploitation" );
+INSERT INTO T_categories ( CatName, Description) VALUES ( "pc" , "laptop" );
+INSERT INTO T_categories ( CatName, Description) VALUES ( "jeux" , "jeux video console" );
+
+SELECT * FROM t_articles;
+SELECT * FROM t_categories;
