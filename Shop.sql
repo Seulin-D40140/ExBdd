@@ -27,12 +27,12 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "casque a
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" , "logitoch" , 755 );
 
 --1.4 ajout articles au choix 
---INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "jeux ps5" , 39 );
---INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "jeux ps5" , 60 );
---INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "jeux xbx" , 59 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "jeux ps5" , 39 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "jeux ps5" , 60 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "jeux xbx" , 59 );
 
 --1.5 ajout article et modification avant de verifier s'il a etait pris en compte 
--- INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "jeux xbx" , 49 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "jeux xbx" , 49 );
 -- update T_articles set brand="jeux ps5" where idArticle=16;
 
 --1.6 supprimer articles et verifier
@@ -54,6 +54,7 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" 
 --1.11 presenter requet sql interessante ( en attente )
 --select AVG(T_articles.UnitaryPrice) FROM T_articles; ( calcule la moyenne de la colonne price )
 
+--1.12 creation T_caterogies
 CREATE TABLE T_categories 
 (
 	idCategory		int(4)			PRIMARY KEY AUTO_INCREMENT,
@@ -61,11 +62,39 @@ CREATE TABLE T_categories
 	Description		varchar(100)	NOT NULL
 ) ENGINE = InnoDB;
 
-
+--1.12 ajout des valeurs 
 INSERT INTO T_categories ( CatName, Description) VALUES ( "peripherique" , "peripherique audio / souris / clavier ..." );
 INSERT INTO T_categories ( CatName, Description) VALUES ( "os" , "systeme d'exploitation" );
 INSERT INTO T_categories ( CatName, Description) VALUES ( "pc" , "laptop" );
 INSERT INTO T_categories ( CatName, Description) VALUES ( "jeux" , "jeux video console" );
+
+--1.12 cree la colonne idCategories pour les stranger key
+ALTER TABLE t_articles ADD COLUMN idCategory INT(4);
+ALTER TABLE t_articles ADD FOREIGN KEY(idCategory) REFERENCES T_categories(idCategory);
+
+--1.12 assigne stranger key a chaque articles
+update t_articles set idCategory=1 where idArticle=1;
+update t_articles set idCategory=1 where idArticle=2;
+update t_articles set idCategory=1 where idArticle=4;
+update t_articles set idCategory=1 where idArticle=5;
+update t_articles set idCategory=1 where idArticle=7;
+update t_articles set idCategory=1 where idArticle=8;
+update t_articles set idCategory=1 where idArticle=9;
+update t_articles set idCategory=1 where idArticle=11;
+update t_articles set idCategory=1 where idArticle=12;
+
+update t_articles set idCategory=2 where idArticle=3;
+
+update t_articles set idCategory=3 where idArticle=10;
+update t_articles set idCategory=3 where idArticle=6;
+
+update t_articles set idCategory=4 where idArticle=13;
+update t_articles set idCategory=4 where idArticle=14;
+update t_articles set idCategory=4 where idArticle=15;
+update t_articles set idCategory=4 where idArticle=16;
+
+
+
 
 SELECT * FROM t_articles;
 SELECT * FROM t_categories;
