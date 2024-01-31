@@ -45,4 +45,10 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" 
 --1.8 afficher articles entre 50 et 150
 -- select * from T_articles where UnitaryPrice > 49 && UnitaryPrice < 150;
 
+--1.9 afficher par ordre croissant des prix
+-- select * from T_articles ORDER BY UnitaryPrice;
+
+--1.10 afficher la description des articles
+-- select T_articles.Description from T_articles;
+
 SELECT * FROM T_articles;
