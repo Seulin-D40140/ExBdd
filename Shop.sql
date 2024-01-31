@@ -27,13 +27,13 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "casque a
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" , "logitoch" , 755 );
 
 --1.4 ajout articles au choix 
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "naugthydog" , 39 );
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "naugthydog" , 60 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "naughtydog" , 39 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "naughtydog" , 60 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "turn 10" , 59 );
 
 --1.5 ajout article et modification avant de verifier s'il a etait pris en compte 
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "ubisoft" , 49 );
--- update T_articles set brand="jeux ps5" where idArticle=16;
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "jeux ps5" , 49 );
+-- update T_articles set brand="ubisoft" where idArticle=16;
 
 --1.6 supprimer articles et verifier
 --delete from T_articles where idArticle=12;
