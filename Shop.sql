@@ -27,12 +27,12 @@ INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "casque a
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "webcam" , "logitoch" , 755 );
 
 --1.4 ajout articles au choix 
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "jeux ps5" , 39 );
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "jeux ps5" , 60 );
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "jeux xbx" , 59 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us" , "naugthydog" , 39 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "last of us 2" , "naugthydog" , 60 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "forza horizon" , "turn 10" , 59 );
 
 --1.5 ajout article et modification avant de verifier s'il a etait pris en compte 
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "jeux xbx" , 49 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "the crew" , "ubisoft" , 49 );
 -- update T_articles set brand="jeux ps5" where idArticle=16;
 
 --1.6 supprimer articles et verifier
@@ -93,8 +93,10 @@ update t_articles set idCategory=4 where idArticle=14;
 update t_articles set idCategory=4 where idArticle=15;
 update t_articles set idCategory=4 where idArticle=16;
 
-
-
+--1.13 trouver la requete
+-- test 1 select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory;
+--test 2 select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory and t_articles.UnitaryPrice ORDER BY UNitaryPrice;
+-- OK select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory where t_articles.idArticle > 10 && t_articles.idArticle < 16 && t_articles.UnitaryPrice ORDER BY UnitaryPrice;
 
 SELECT * FROM t_articles;
 SELECT * FROM t_categories;
