@@ -33,7 +33,7 @@ public class ArticleDao
 			try(Statement statement = connection.createStatement())
 			{
 				try(ResultSet resultSet = statement.executeQuery(strSql))
-				{
+				{ 
 					while( resultSet.next())
 					{
 						int rsID = resultSet.getInt(1);
@@ -41,6 +41,7 @@ public class ArticleDao
 						String rsBrand = resultSet.getString(3);
 						double rsPrise = resultSet.getDouble(4);
 						articles.add(new Article(rsID , rsDescription , rsBrand , rsPrise));
+						
 					}
 				}
 			}
@@ -61,7 +62,7 @@ public class ArticleDao
 		String login = "root";
 		String password = "fms2024";
 		
-		String strSqlAdd = "INSERT INTO T_articles (Description , Brand , UnitaryPrice) VALUES ( ? , ? , ? );";
+		String strSqlAdd = "INSERT INTO T_articles (Description , Brand , UnitaryPrice ) VALUES ( ? , ? , ? );";
 		try (Connection connection = DriverManager.getConnection(url, login, password))
 		{
 			try(PreparedStatement ps = connection.prepareStatement(strSqlAdd))
@@ -69,6 +70,31 @@ public class ArticleDao
 				ps.setString(1, obj.getDescription());
 				ps.setString(2, obj.getBrand());
 				ps.setDouble(3, obj.getPrice());
+				if( ps.executeUpdate() == 1)
+				{
+					System.out.println("insert OK");
+				}
+			}
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void removeArticle(int idArticle)
+	{
+		String url = "jdbc:mariadb://localhost:3306/Shop";
+		String login = "root";
+		String password = "fms2024";
+		
+		String strSqlDel = "delete from T_articles where idArticle= ? ";
+		try (Connection connection = DriverManager.getConnection(url, login, password))
+		{
+			try(PreparedStatement ps = connection.prepareStatement(strSqlDel))
+			{
+				ps.setInt(1, idArticle);
+				
 				if( ps.executeUpdate() == 1)
 				{
 					System.out.println("insert OK");
@@ -103,7 +129,6 @@ public class ArticleDao
 					System.out.println("insert OK");
 				}
 			}
-			
 		} 
 		catch (Exception e) 
 		{
@@ -111,30 +136,38 @@ public class ArticleDao
 		}
 	}
 	
-	public void displayAll()
+	public void displayOneArticle(int idArticle)
 	{
 		String url = "jdbc:mariadb://localhost:3306/Shop";
 		String login = "root";
 		String password = "fms2024";
-		String strSqlAll = "select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory";
+		
+		String strSqlAll = "select * from t_articles where t_articles.idArticle ="+idArticle;
 		
 		try (Connection connection = DriverManager.getConnection(url, login, password))
 		{
 			try(Statement statement = connection.createStatement())
 			{
 				try(ResultSet resultSet = statement.executeQuery(strSqlAll))
-				{
-					
+				{ 
+					while(resultSet.next())
+					{
+						System.out.print("id : " + resultSet.getInt(1) + " ,  desc : " + resultSet.getString(2) + " ,  marque : " + resultSet.getString(3));
+					}
 				}
+			} 
+			catch (Exception e) 
+			{
+				System.out.println("pb1");
+				e.printStackTrace();
 			}
-			
-		} 
+		}
 		catch (Exception e) 
 		{
+			System.out.println("pb2");
 			e.printStackTrace();
 		}
-	
-	}
+	}	
 }
 
 

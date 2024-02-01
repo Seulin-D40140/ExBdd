@@ -15,7 +15,7 @@ CREATE TABLE T_articles
 
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "souris" , "logitoch" , 65 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "clavier" , "microhard" , 49.5 );
-INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( " systeme d'exploitation" , "fenetre Vistouille" , 150 );
+INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "systeme d'exploitation" , "fenetre Vistouille" , 150 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "tapis Souris" , "chapeau bleu" , 5 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( " cle USB 8TO" , "syno" , 8 );
 INSERT INTO T_articles ( Description , Brand , UnitaryPrice ) VALUES ( "laptop" , "PH" , 1199 );
@@ -59,14 +59,14 @@ CREATE TABLE T_categories
 (
 	idCategory		int(4)			PRIMARY KEY AUTO_INCREMENT,
 	CatName			varchar(30)		NOT NULL,
-	Description		varchar(100)	NOT NULL
+	Descriptions		varchar(100)	NOT NULL
 ) ENGINE = InnoDB;
 
 --1.12 ajout des valeurs 
-INSERT INTO T_categories ( CatName, Description) VALUES ( "peripherique" , "peripherique audio / souris / clavier ..." );
-INSERT INTO T_categories ( CatName, Description) VALUES ( "os" , "systeme d'exploitation" );
-INSERT INTO T_categories ( CatName, Description) VALUES ( "pc" , "laptop" );
-INSERT INTO T_categories ( CatName, Description) VALUES ( "jeux" , "jeux video console" );
+INSERT INTO T_categories ( CatName, Descriptions) VALUES ( "peripherique" , "peripherique audio / souris / clavier ..." );
+INSERT INTO T_categories ( CatName, Descriptions) VALUES ( "os" , "systeme d'exploitation" );
+INSERT INTO T_categories ( CatName, Descriptions) VALUES ( "pc" , "laptop" );
+INSERT INTO T_categories ( CatName, Descriptions) VALUES ( "jeux" , "jeux video console" );
 
 --1.12 cree la colonne idCategories pour les stranger key
 ALTER TABLE t_articles ADD COLUMN idCategory INT(4);
