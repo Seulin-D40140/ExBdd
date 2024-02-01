@@ -1,4 +1,5 @@
-import java.io.FileInputStream;
+package fr.fms.bdd;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,9 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import org.omg.DynamicAny._DynEnumStub;
+import fr.fms.dao.Dao;
+import fr.fms.entities.*;
 
-public class ArticleDao 
+public class ArticleDao implements Dao<Article>
 {
 	
 	public void tryForName() throws IOException
@@ -27,12 +29,19 @@ public class ArticleDao
 		}
 	}
 	
-	public void displaybdd(ArrayList<Article> articles ) throws IOException
+	public void displaybdd(ArrayList<Article> articles )
 	{
-		Properties prp = CreateConfigFile.readFile("configtext.txt");
-		String url = prp.getProperty("db.url");
-		String login = prp.getProperty("db.login");
-		String password = prp.getProperty("db.password");
+		String url = null;
+		String login = null;
+		String password = null;
+		try {
+			Properties prp = CreateConfigFile.readFile("configtext.txt");
+			url = prp.getProperty("db.url");
+			login = prp.getProperty("db.login");
+			password = prp.getProperty("db.password");
+		} catch (Exception e) {
+			System.out.println("fichier non trouver" + e);// TODO: handle exception
+		}
 		
 		String strSql = "SELECT * FROM T_articles"; 
 		try (Connection connection = DriverManager.getConnection(url, login, password))
@@ -176,25 +185,6 @@ public class ArticleDao
 		}
 	}	
 	
-	public static Properties readFile (String fileName) throws IOException
-	{
-		FileInputStream fis = null;
-		Properties prop = null;
-		try 
-		{
-			fis = new FileInputStream(fileName);
-			prop = new Properties();
-		} 
-		catch (Exception e) 
-		{
-			e.fillInStackTrace();
-		}
-		finally 
-		{
-			fis.close();
-		}
-		return prop;
-	}
 }
 
 

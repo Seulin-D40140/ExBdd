@@ -1,6 +1,8 @@
+import fr.fms.bdd.ArticleDao;
 
+import fr.fms.entities.*;
 import java.util.ArrayList;
-import java.util.Properties;
+
 
 
 class TestJdbc 
@@ -30,11 +32,8 @@ class TestJdbc
 //		article.displaybdd(articles);
 		
 		System.out.println("*****************************");
-		// aficher 1 seul article
+//		 aficher 1 seul article
 //		article.displayOneArticle(16);
 		article.displaybdd(articles);
-		
-//		Properties prp = CreateConfigFile.readFile("configtext.txt");
-//		System.out.println(prp.getProperty("db.login"));
 	}
 }
