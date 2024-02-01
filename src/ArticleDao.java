@@ -1,19 +1,25 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.omg.DynamicAny._DynEnumStub;
 
 public class ArticleDao 
 {
-	public void tryForName()
+	
+	public void tryForName() throws IOException
 	{
+		Properties prp = CreateConfigFile.readFile("configtext.txt");
+		
 		try 
 		{
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName(prp.getProperty("db.driver.class"));
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -21,11 +27,12 @@ public class ArticleDao
 		}
 	}
 	
-	public void displaybdd(ArrayList<Article> articles )
+	public void displaybdd(ArrayList<Article> articles ) throws IOException
 	{
-		String url = "jdbc:mariadb://localhost:3306/Shop";
-		String login = "root";
-		String password = "fms2024";
+		Properties prp = CreateConfigFile.readFile("configtext.txt");
+		String url = prp.getProperty("db.url");
+		String login = prp.getProperty("db.login");
+		String password = prp.getProperty("db.password");
 		
 		String strSql = "SELECT * FROM T_articles"; 
 		try (Connection connection = DriverManager.getConnection(url, login, password))
@@ -168,6 +175,26 @@ public class ArticleDao
 			e.printStackTrace();
 		}
 	}	
+	
+	public static Properties readFile (String fileName) throws IOException
+	{
+		FileInputStream fis = null;
+		Properties prop = null;
+		try 
+		{
+			fis = new FileInputStream(fileName);
+			prop = new Properties();
+		} 
+		catch (Exception e) 
+		{
+			e.fillInStackTrace();
+		}
+		finally 
+		{
+			fis.close();
+		}
+		return prop;
+	}
 }
 
 
