@@ -6,9 +6,15 @@ public class Article
 	String rsMarque;
 	double rsPrixUnitaire;
 	
-	public Article( int rsIdArticle , String rsDescription , String rsMarque , double rsPrixUnitaire)
+	public Article( int rsIdArticle , String rsDescription , String rsMarque , double rsPrixUnitaire )
 	{
 		this.rsIdArticle = rsIdArticle;
+		this.rsDescription = rsDescription;
+		this.rsMarque = rsMarque;
+		this.rsPrixUnitaire = rsPrixUnitaire;
+	}
+	public Article ( String rsDescription , String rsMarque , double rsPrixUnitaire )
+	{
 		this.rsDescription = rsDescription;
 		this.rsMarque = rsMarque;
 		this.rsPrixUnitaire = rsPrixUnitaire;
