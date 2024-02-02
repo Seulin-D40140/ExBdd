@@ -19,6 +19,7 @@ public class Bddconnection
 		} 
 		catch (IOException e) 
 		{
+			System.out.println(" erreur methode getconnection : lecture du fichier " + e );
 			e.printStackTrace();
 		}
 		
@@ -26,16 +27,20 @@ public class Bddconnection
 		{
 			Class.forName(prp.getProperty("db.driver.class"));
 			Connection connection;
-			try {
+			try 
+			{
 				connection = DriverManager.getConnection(prp.getProperty("db.url") , prp.getProperty("db.login") , prp.getProperty("db.password"));
 				return connection;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (SQLException e) 
+			{
+				System.out.println(" erreur methode get connection : probleme autentification " + e );
 				e.printStackTrace();
 			}
 		} 
 		catch (ClassNotFoundException e) 
 		{
+			System.out.println(" erreur methode get connection " + e );
 			e.printStackTrace();
 		}
 		return null;

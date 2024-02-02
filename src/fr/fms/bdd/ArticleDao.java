@@ -35,6 +35,7 @@ public class ArticleDao implements Dao<Article>
 		} 
 		catch (Exception e) 
 		{
+			System.out.println(" erreur methode displayBdd " + e );
 			e.printStackTrace();
 		}
 	} 
@@ -55,6 +56,7 @@ public class ArticleDao implements Dao<Article>
 		}
 		catch (Exception e) 
 		{
+			System.out.println(" erreur methode add article " + e );
 			e.printStackTrace();
 		}
 	}
@@ -74,19 +76,20 @@ public class ArticleDao implements Dao<Article>
 		}
 		catch (Exception e) 
 		{
+			System.out.println(" erreur methode remove article " + e );
 			e.printStackTrace();
 		}
 	}
 	
-	public void UpdtArticle (String description , String brand , Double price , int id)
+	public void UpdtArticle (Article obj , int id)
 	{
 		String strSqlUpdt = "update T_articles set Description=? ,  brand=?  , UnitaryPrice=? where idArticle=?";
 		
 		try(PreparedStatement ps = connection.prepareStatement(strSqlUpdt))
 		{
-			ps.setString(1, description);
-			ps.setString(2, brand);
-			ps.setDouble(3, price);
+			ps.setString(1, obj.getDescription());
+			ps.setString(2, obj.getBrand());
+			ps.setDouble(3, obj.getPrice());
 			ps.setInt(4, id);
 			
 			if( ps.executeUpdate() == 1)
@@ -96,6 +99,7 @@ public class ArticleDao implements Dao<Article>
 		}
 		catch (Exception e) 
 		{
+			System.out.println(" erreur methode update " + e );
 			e.printStackTrace();
 		}
 	}
@@ -116,13 +120,13 @@ public class ArticleDao implements Dao<Article>
 			}
 			catch (Exception e) 
 			{
-				System.out.println("pb1");
+				System.out.println(" erreur query dans la methode displayOne " + e );
 				e.printStackTrace();
 			}
 		}
 		catch (Exception e) 
 		{
-			System.out.println("pb2");
+			System.out.println(" erreur methode displayOne " + e );
 			e.printStackTrace();
 		}
 	}	
