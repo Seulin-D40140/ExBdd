@@ -13,7 +13,7 @@ class TestJdbc
 		ArticleDao article = new ArticleDao();
 		Article cod = new Article ("call of duty ", "activision ", 119);
 		
-		article.tryForName();
+		
 		
 		System.out.println("*****************************");
 		// ajout article
@@ -33,7 +33,7 @@ class TestJdbc
 		
 		System.out.println("*****************************");
 //		 aficher 1 seul article
-//		article.displayOneArticle(16);
+//		article.displayOneArticle(5);
 		article.displaybdd(articles);
 	}
 }

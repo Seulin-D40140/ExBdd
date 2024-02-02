@@ -1,8 +1,10 @@
 package fr.fms.dao;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public interface Dao<T> 
 {
+	public Connection connection = Bddconnection.getConnection();
 	public void addArticle( T obj); // ajouter un article
 	public void removeArticle(int idArticle); // supprimer un article
 	public void UpdtArticle (String description , String brand , Double price , int id); // mise a jour article
