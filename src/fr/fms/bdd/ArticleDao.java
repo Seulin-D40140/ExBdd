@@ -26,7 +26,6 @@ public class ArticleDao implements Dao<Article>
 					String rsBrand = resultSet.getString(3);
 					double rsPrise = resultSet.getDouble(4);
 					articles.add(new Article(rsID , rsDescription , rsBrand , rsPrise));
-//						System.out.print("id : " + resultSet.getInt(1) + " ,  desc : " + resultSet.getString(2) + " ,  marque : " + resultSet.getString(3));
 				}
 			}
 			for(Article a : articles)
@@ -103,11 +102,12 @@ public class ArticleDao implements Dao<Article>
 	
 	public void displayOneArticle(int idArticle)
 	{
-		String strSqlAll = "select * from t_articles where t_articles.idArticle ="+idArticle;
+		String strSqlAll = "select * from t_articles where t_articles.idArticle = ? ";
 		
-		try(Statement statement = connection.createStatement())
+		try(PreparedStatement statement = connection.prepareStatement(strSqlAll))
 		{
-			try(ResultSet resultSet = statement.executeQuery(strSqlAll))
+			statement.setInt(1, idArticle);
+			try(ResultSet resultSet = statement.executeQuery())
 			{ 
 				while(resultSet.next())
 				{
@@ -126,7 +126,6 @@ public class ArticleDao implements Dao<Article>
 			e.printStackTrace();
 		}
 	}	
-	
 }
 
 

@@ -10,7 +10,6 @@ import fr.fms.bdd.CreateConfigFile;
 
 public class Bddconnection 
 {
-
 	static Connection getConnection() 
 	{
 		Properties prp = null;
@@ -34,7 +33,6 @@ public class Bddconnection
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -42,5 +40,4 @@ public class Bddconnection
 		}
 		return null;
 	}
-
 }

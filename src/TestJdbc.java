@@ -3,8 +3,6 @@ import fr.fms.bdd.ArticleDao;
 import fr.fms.entities.*;
 import java.util.ArrayList;
 
-
-
 class TestJdbc 
 {
 	public static void main(String[] args) throws Exception
@@ -33,7 +31,7 @@ class TestJdbc
 		
 		System.out.println("*****************************");
 //		 aficher 1 seul article
-//		article.displayOneArticle(5);
-		article.displaybdd(articles);
+		article.displayOneArticle(5);
+//		article.displaybdd(articles);
 	}
 }
