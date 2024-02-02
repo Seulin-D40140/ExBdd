@@ -10,7 +10,9 @@ import fr.fms.entities.*;
 
 public class ArticleDao implements Dao<Article>
 {
-	public void displaybdd(ArrayList<Article> articles )
+	ArrayList<Article> articles = new ArrayList<>();
+	
+	public void displayAll()
 	{
 		String strSql = "SELECT * FROM T_articles"; 
 		
@@ -20,7 +22,6 @@ public class ArticleDao implements Dao<Article>
 			{ 
 				while( resultSet.next())
 				{
-					System.out.println(resultSet.getString(2));
 					int rsID = resultSet.getInt(1);
 					String rsDescription = resultSet.getString(2);
 					String rsBrand = resultSet.getString(3);
@@ -35,12 +36,12 @@ public class ArticleDao implements Dao<Article>
 		} 
 		catch (Exception e) 
 		{
-			System.out.println(" erreur methode displayBdd " + e );
+			System.out.println(" erreur methode display article " + e );
 			e.printStackTrace();
 		}
 	} 
 	
-	public void addArticle(Article obj)
+	public void add(Article obj)
 	{
 		String strSqlAdd = "INSERT INTO T_articles (Description , Brand , UnitaryPrice ) VALUES ( ? , ? , ? );";
 		
@@ -61,7 +62,7 @@ public class ArticleDao implements Dao<Article>
 		}
 	}
 	
-	public void removeArticle(int idArticle)
+	public void remove(int idArticle)
 	{
 		String strSqlDel = "delete from T_articles where idArticle= ? ";
 		
@@ -81,7 +82,7 @@ public class ArticleDao implements Dao<Article>
 		}
 	}
 	
-	public void UpdtArticle (Article obj , int id)
+	public void update (Article obj , int id)
 	{
 		String strSqlUpdt = "update T_articles set Description=? ,  brand=?  , UnitaryPrice=? where idArticle=?";
 		
@@ -99,12 +100,12 @@ public class ArticleDao implements Dao<Article>
 		}
 		catch (Exception e) 
 		{
-			System.out.println(" erreur methode update " + e );
+			System.out.println(" erreur methode update article " + e );
 			e.printStackTrace();
 		}
 	}
 	
-	public void displayOneArticle(int idArticle)
+	public void displayOne(int idArticle)
 	{
 		String strSqlAll = "select * from t_articles where t_articles.idArticle = ? ";
 		
@@ -115,7 +116,7 @@ public class ArticleDao implements Dao<Article>
 			{ 
 				while(resultSet.next())
 				{
-					System.out.print("id : " + resultSet.getInt(1) + " ,  desc : " + resultSet.getString(2) + " ,  marque : " + resultSet.getString(3));
+					System.out.println("ID : " + resultSet.getInt(1) + " ,  DESC : " + resultSet.getString(2) + " ,  MARQUE : " + resultSet.getString(3));
 				}
 			}
 			catch (Exception e) 
@@ -126,7 +127,7 @@ public class ArticleDao implements Dao<Article>
 		}
 		catch (Exception e) 
 		{
-			System.out.println(" erreur methode displayOne " + e );
+			System.out.println(" erreur methode displayOne article " + e );
 			e.printStackTrace();
 		}
 	}	
