@@ -59,7 +59,7 @@ CREATE TABLE T_categories
 (
 	idCategory		int(4)			PRIMARY KEY AUTO_INCREMENT,
 	CatName			varchar(30)		NOT NULL,
-	Descriptions		varchar(100)	NOT NULL
+	Descriptions	varchar(100)	NOT NULL
 ) ENGINE = InnoDB;
 
 --1.12 ajout des valeurs 
@@ -98,5 +98,18 @@ update t_articles set idCategory=4 where idArticle=16;
 --test 2 select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory and t_articles.UnitaryPrice ORDER BY UNitaryPrice;
 -- OK select idArticle ,  t_articles.Description,Brand,UnitaryPrice,CatName from t_articles inner join t_categories on t_categories.idCategory = t_articles.idCategory where t_articles.idArticle > 10 && t_articles.idArticle < 16 && t_articles.UnitaryPrice ORDER BY UnitaryPrice;
 
+CREATE TABLE T_users 
+(
+	idUser		int(4)			PRIMARY KEY AUTO_INCREMENT,
+	Login		varchar(30)		NOT NULL,
+	Password	varchar(30)		NOT NULL
+) ENGINE = InnoDB;
+
+INSERT INTO T_users (  Login , Password) VALUES ( "toto40" , "taratoto40" );
+INSERT INTO T_users (  Login , Password) VALUES ( "tata40" , "taratata40" );
+INSERT INTO T_users (  Login , Password) VALUES ( "titi40" , "taratiti40" );
+INSERT INTO T_users (  Login , Password) VALUES ( "tutu40" , "taratutu40" );
+
 SELECT * FROM t_articles;
 SELECT * FROM t_categories;
+SELECT * FROM t_users;
